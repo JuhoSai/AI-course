@@ -130,6 +130,8 @@ def print_results(label, results, show_distances=False):
 print("\n--- EXERCISE 1: Basic metadata filter ---")
 
 # Write your code here:
+result = collection.get(where={"category": "vpn"})
+print_results("Documents where category == 'vpn'", result)
 
 
 # ---------------------------------------------------------------------------
@@ -143,7 +145,14 @@ print("\n--- EXERCISE 1: Basic metadata filter ---")
 print("\n--- EXERCISE 2: Combined metadata filters ---")
 
 # Write your code here:
-
+result2 = collection.get(where={
+    "$and": [
+        {"priority": "high"},
+        {"year": 2025},
+        {"verified": True}
+    ]
+})
+print_results("Documents with combined filters", result2)
 
 # ---------------------------------------------------------------------------
 # EXERCISE 3 — Full text search with where_document
@@ -157,7 +166,14 @@ print("\n--- EXERCISE 2: Combined metadata filters ---")
 print("\n--- EXERCISE 3: Full text search ---")
 
 # Write your code here:
+result3a = collection.get(where_document={"$contains": "student"})
+print_results("Documents containing 'student'", result3a)
 
+result3b = collection.get(where_document={"$and": [
+    {"$contains": "student"},
+    {"$not_contains": "password"}
+]})
+print_results("Documents containing 'student' but not 'password'", result3b)
 
 # ---------------------------------------------------------------------------
 # EXERCISE 4 — Combining semantic query with metadata and text filters
@@ -172,3 +188,9 @@ print("\n--- EXERCISE 3: Full text search ---")
 print("\n--- EXERCISE 4: Semantic query + metadata filter + text filter ---")
 
 # Write your code here:
+result4 = collection.query(
+    query_texts=["how do I print documents on campus"],
+    where={"category": "printing"},
+    where_document={"$contains": "page"}
+)
+print_results("Documents matching semantic query with filters", result4)
