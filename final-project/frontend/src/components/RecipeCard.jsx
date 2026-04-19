@@ -1,3 +1,4 @@
+// Displays the generated recipe data
 export default function RecipeCard({ recipe }) {
   if (!recipe) return null;
 
