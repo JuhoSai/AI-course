@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function RecipeForm({ onGenerate }) {
+  // State for storing form input values
   const [form, setForm] = useState({
     ingredients: "",
     cuisine: "",
@@ -8,6 +9,7 @@ export default function RecipeForm({ onGenerate }) {
     time: 30
   });
 
+  // Updates form state when input values change
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -15,6 +17,7 @@ export default function RecipeForm({ onGenerate }) {
     });
   };
 
+  // Triggers recipe generation with current form data
   const handleSubmit = () => {
     onGenerate(form);
   };
@@ -59,6 +62,7 @@ export default function RecipeForm({ onGenerate }) {
 
       <br />
 
+      {/* Submit form and initiate recipe generation */}
       <button onClick={handleSubmit}>
         Generate Recipe
       </button>
