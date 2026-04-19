@@ -1,6 +1,0 @@
-langchain-community
-langchain-openai
-langchain-core
-langgraph
-azure-search-documents
-python-dotenv
