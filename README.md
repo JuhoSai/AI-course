@@ -51,6 +51,17 @@
         -Backend runs at:
             http://127.0.0.1:8000
 
+    3. Frontend setup
+        - Open a new terminal
+        - cd Frontend
+        - Use commands:
+            npm install
+            npm install axios
+            npm run dev
+
+        - Frontend runs at:
+            http://localhost:5173
+
 ## Known limitations
     - No database — recipes are not saved
     - AI output is not always perfectly formatted JSON — responses may include extra text or formatting errors, which can cause parsing issues
